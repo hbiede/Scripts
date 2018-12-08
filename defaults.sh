@@ -13,15 +13,28 @@ killall "System Preferences"
 # Show the ~/Library folder.
 chflags nohidden ~/Library
 
-# Dark Mode
+# Dark Mode w/ Red accents
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
+defaults write NSGlobalDomain AppleAccentColor -int 0
 
-# Install Homebrew, ffmpeg if not installed
+# Install Homebrew, ffmpeg, youtube-dl, fish, wget, and nano if not installed
 if ! hash brew 2>/dev/null; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" >/dev/null;
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
 fi
 if ! hash ffmpeg 2>/dev/null; then
-  brew "ffmpeg", args: ["with-libvpx", "with-webp", "with-x265"] >/dev/null;
+  brew "ffmpeg", args: ["with-libvpx", "with-webp", "with-x265"];
+fi
+if ! hash youtube-dl 2>/dev/null; then
+  brew install youtube-dl;
+fi
+if ! hash fish 2>/dev/null; then
+  brew install fish;
+fi
+if ! hash wget 2>/dev/null; then
+  brew install wget;
+fi
+if ! hash nano 2>/dev/null; then
+  brew install nano;
 fi
 
 # Cleanup
@@ -407,15 +420,19 @@ defaults write com.apple.itunes dontAutomaticallySyncIPods -bool true
 # Disable automatic emoji substitution (i.e. use plain text smileys)
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
-# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
-
-# DOn't prompt to start time machine on connection to new Hard Drives
+# Don't prompt to start time machine on connection to new Hard Drives
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+# Alias Commands
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown'"
+funcsave show
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden'"
+funcsave hide
+alias updater='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+funcsave updater
+
+# Update All
+updater
 
 echo ""
 echo "Rebooting"
