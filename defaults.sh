@@ -436,4 +436,4 @@ updater
 
 echo ""
 echo "Rebooting"
-#sudo reboot
+sudo reboot
