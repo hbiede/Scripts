@@ -21,14 +21,17 @@ defaults write NSGlobalDomain AppleAccentColor -int 0
 if ! hash brew 2>/dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
 fi
+if ! hash fish 2>/dev/null; then
+  brew install fish;
+  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells;
+  chsh -s /usr/local/bin/fish;
+  fish
+fi
 if ! hash ffmpeg 2>/dev/null; then
-  brew "ffmpeg", args: ["with-libvpx", "with-webp", "with-x265"];
+  brew install ffmpeg --with-libvpx --with-webp --with-x265
 fi
 if ! hash youtube-dl 2>/dev/null; then
   brew install youtube-dl;
-fi
-if ! hash fish 2>/dev/null; then
-  brew install fish;
 fi
 if ! hash wget 2>/dev/null; then
   brew install wget;
@@ -38,7 +41,8 @@ if ! hash nano 2>/dev/null; then
 fi
 
 # Cleanup
-brew cleanup>/dev/null && brew prune>/dev/null
+brew cleanup>/dev/null
+brew prune>/dev/null
 
 # Turn off shake mouse cursor to locate
 defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLocationMagnification -bool true
@@ -46,7 +50,7 @@ defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLoc
 # Don't set date and time automatically
 sudo systemsetup -setusingnetworktime off>/dev/null
 
-# Don't set time zome automatically using current location
+# Don't set time zone automatically using current location
 sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool false
 
 # Download newly available App Store updates in the background
@@ -110,33 +114,33 @@ defaults write NSGlobalDomain com.apple.trackpad.threeFingerVertSwipeGesture -in
 defaults write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
 defaults write NSGlobalDomain com.apple.trackpad.twoFingerDoubleTapGesture -int 0
 defaults write NSGlobalDomain com.apple.trackpad.twoFingerFromRightEdgeSwipeGesture -int 0
-defaults -currentUser write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
-defaults -currentUser write NSGlobalDomain AppleShowScrollBars WhenScrolling
-defaults -currentUser write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
-defaults -currentUser write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-defaults -currentUser write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
-defaults -currentUser write NSGlobalDomain com.apple.sound.beep.flash -int 0
-defaults -currentUser write NSGlobalDomain com.apple.swipescrolldirection -bool false
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.forceClick -bool false
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.scaling 0.9
-defaults -currentUser write NSGlobalDomain ContextMenuGesture -int 1
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.fiveFingerPinchSwipeGesture -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.fourFingerHorizSwipeGesture -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.fourFingerPinchSwipeGesture -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.fourFingerVertSwipeGesture -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.momentumScroll -bool true
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.pinchGesture -bool true
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.rotateGesture -bool true
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.scrollBehavior -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.threeFingerDragGesture -bool false
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.threeFingerTapGesture -int 0
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.threeFingerVertSwipeGesture -int 2
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.twoFingerDoubleTapGesture -int 0
-defaults -currentUser write NSGlobalDomain com.apple.trackpad.twoFingerFromRightEdgeSwipeGesture -int 0
+defaults -currentHost write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
+defaults -currentHost write NSGlobalDomain AppleShowScrollBars WhenScrolling
+defaults -currentHost write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
+defaults -currentHost write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults -currentHost write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
+defaults -currentHost write NSGlobalDomain com.apple.sound.beep.flash -int 0
+defaults -currentHost write NSGlobalDomain com.apple.swipescrolldirection -bool false
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.scaling 0.9
+defaults -currentHost write NSGlobalDomain ContextMenuGesture -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fiveFingerPinchSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fourFingerHorizSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fourFingerPinchSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fourFingerVertSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.momentumScroll -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.pinchGesture -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.rotateGesture -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.scrollBehavior -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerDragGesture -bool false
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerTapGesture -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerVertSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.twoFingerDoubleTapGesture -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.twoFingerFromRightEdgeSwipeGesture -int 0
 
 # Double clicking menu bar doesn't do anything
 defaults write NSGlobalDomain AppleActionOnDoubleClick -string "None"
@@ -144,9 +148,6 @@ defaults write NSGlobalDomain AppleActionOnDoubleClick -string "None"
 # Allow Handoff between this Mac and your iCloud devices
 defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd ActivityAdvertisingAllowed -bool true
 defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd ActivityReceivingAllowed -bool true
-
-# Disable Keyboard backlighting
-defaults write com.apple.BezelServices kDim -bool false
 
 # Disable Siri
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
@@ -161,11 +162,15 @@ defaults write com.apple.AdLib forceLimitAdTracking -bool true
 # Set the Finder prefs for showing a few different volumes on the Desktop.
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
 defaults write com.apple.finder FXPreferredSearchViewStyle -string "Nlsv"
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Search current folder by default
+defaults write com.apple.finder FXDefaultSearchScope SCcf
 
 # Show the home folder instead of all files when opening a new finder window
 defaults write com.apple.finder NewWindowTarget PfHm
@@ -198,12 +203,11 @@ killall Finder
 
 
 ## Dock
-# echo "Wipe all (default) app icons from the Dock? (y/n)"
-# echo "(This is only really useful when setting up a new Mac, or if you don't use the Dock to launch apps.)"
-# read -r response
-# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-#   defaults write com.apple.dock persistent-apps -array
-# fi
+echo "Wipe all (default) app icons from the Dock? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.dock persistent-apps -array
+fi
 
 # Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 50
@@ -236,9 +240,6 @@ defaults write com.apple.dock show-recents -bool false
 
 # Disable the Launchpad gesture (pinch with thumb and three fingers)
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
-
-# Don't show recent apps
-defaults write com.apple.dock show-recents -bool false
 
 # Set Menu Bar
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool false
@@ -273,6 +274,9 @@ defaults write com.apple.iCal "first day of week" -int 0
 # 2: Week, Stop on Today
 defaults write com.apple.iCal "scroll by weeks in week view" -int 1
 
+# Show Calendar Sidebar
+defaults write com.apple.iCal CalendarSidebarShown -bool true
+
 # Day starts at (in minutes):
 defaults write com.apple.iCal "first minute of work hours" -int 480
 
@@ -297,21 +301,8 @@ killall Calendar>/dev/null
 
 ## Safari
 
-# Show the full URL in the address bar (note: this still hides the scheme)
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# Prevent Safari from opening ‘safe’ files automatically after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-
-# Set up Safari for development.
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# Show Safari's bookmark bar.
-defaults write com.apple.Safari ShowFavoritesBar -bool true
+# Set up Safari for development
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool
 
 # Enable continuous spellchecking
 defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
@@ -321,9 +312,6 @@ defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool fals
 
 # Warn about fraudulent websites
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-# Enable “Do Not Track”
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Disable Java
 defaults write com.apple.Safari WebKitJavaEnabled -bool false
