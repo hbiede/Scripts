@@ -2,7 +2,7 @@
 # Adapted from tibr
 # https://github.com/tibr/dotfiles/blob/master/osx/set-defaults.sh
 # 
-# Inspired by zach holman
+# Originally inspired by zach holman
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
