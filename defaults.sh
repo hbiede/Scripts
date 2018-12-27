@@ -25,10 +25,10 @@ if ! hash fish 2>/dev/null; then
   brew install fish;
   echo "/usr/local/bin/fish" | sudo tee -a /etc/shells;
   chsh -s /usr/local/bin/fish;
-  fish
+  fish;
 fi
 if ! hash ffmpeg 2>/dev/null; then
-  brew install ffmpeg --with-libvpx --with-webp --with-x265
+  brew install ffmpeg --with-libvpx --with-webp --with-x265;
 fi
 if ! hash youtube-dl 2>/dev/null; then
   brew install youtube-dl;
@@ -424,4 +424,5 @@ updater
 
 echo ""
 echo "Rebooting"
+sleep 5
 sudo reboot
