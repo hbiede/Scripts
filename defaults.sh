@@ -423,6 +423,6 @@ funcsave updater
 updater
 
 echo ""
-echo "Rebooting"
+echo "Rebooting to Finalize Changes"
 sleep 5
 sudo reboot
