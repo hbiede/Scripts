@@ -17,6 +17,10 @@ chflags nohidden ~/Library
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 defaults write NSGlobalDomain AppleAccentColor -int 0
 
+# Set Key Repeats Appropriately
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
 # Install Homebrew, ffmpeg, youtube-dl, fish, wget, and nano if not installed
 if ! hash brew 2>/dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
@@ -413,11 +417,23 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Alias Commands
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown'"
-funcsave show
+echo "# Defined in - @ line 0
+function show --description alias\ show=defaults\ write\ com.apple.finder\ AppleShowAllFiles\ -bool\ true\;\ killall\ Finder\;\ echo\ \'Hidden\ Files\ Shown\'
+	defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown' $argv;
+end
+" > ~/.config/fish/functions/hide.fish
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden'"
-funcsave hide
+echo "# Defined in - @ line 0
+function hide --description alias\ hide=defaults\ write\ com.apple.finder\ AppleShowAllFiles\ -bool\ false\;\ killall\ Finder\;\ echo\ \'Hidden\ Files\ Hidden\'
+	defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden' $argv;
+end
+" > ~/.config/fish/functions/show.fish
 alias updater='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
-funcsave updater
+echo "# Defined in - @ line 0
+function updater --description 'alias updater=sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+	sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup $argv;
+end
+" > ~/.config/fish/functions/updater.fish
 
 # Update All
 updater
