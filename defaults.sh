@@ -214,7 +214,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.dock persistent-apps -array
 fi
 
-# Set the icon size of Dock items to 36 pixels
+# Set the icon size of Dock items to 50 pixels
 defaults write com.apple.dock tilesize -int 50
 
 # Lock the Dock size
@@ -299,8 +299,8 @@ defaults write com.apple.iCal WarnBeforeSendingInvitations -bool true
 
 # Set display length for Calendar
 defaults write com.apple.iCal "number of hours displayed" -int 16
-killall Calendar>/dev/null
 
+killall Calendar>/dev/null
 ## End Calendar
 
 
@@ -354,8 +354,8 @@ defaults write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
 
 # Don't prefer nicknames
 defaults write NSGlobalDomain NSPersonNameDefaultShouldPreferNicknamesPreference -bool false
-killall Contacts>/dev/null
 
+killall Contacts>/dev/null
 ## End Contacts
 
 
