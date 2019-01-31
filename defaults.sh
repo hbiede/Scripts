@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.1.1
+# Version 1.2
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -45,9 +45,72 @@ if ! hash nano 2>/dev/null; then
   brew install nano;
 fi
 
+
+
+## Install Apps
+brew cask install bbedit
+brew cask install adobe-creative-cloud
+brew cask install alfred
+brew cask install discord
+brew cask install omnifocus
+brew cask install google-chrome
+brew cask install spotify
+brew cask install quicklook-json
+brew cask install sourcetree
+brew cask install caffeine
+brew cask install spectacle
+brew cask install intellij-idea
+mv /Applications/IntelliJ\ IDEA.app /Applications/IntelliJ.app
+brew cask install clion
+brew cask install qbittorrent
+brew cask install vlc
+brew cask install the-unarchiver
+## End Install Apps
+
+
+
+## Default Apps
+
+brew install duti
+duti -s com.apple.Finder ftp
+echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, and tex to the current default application for txt"
+
+duti -s com.barebones.bbedit .sh all
+duti -s com.barebones.bbedit .plist all
+duti -s com.barebones.bbedit .m all
+duti -s com.barebones.bbedit .h all
+duti -s com.barebones.bbedit .cpp all
+duti -s com.barebones.bbedit .c all
+duti -s com.barebones.bbedit .java all
+duti -s com.barebones.bbedit .php all
+duti -s com.barebones.bbedit .swift all
+duti -s com.barebones.bbedit .html all
+duti -s com.barebones.bbedit .htm all
+duti -s com.barebones.bbedit .css all
+duti -s com.barebones.bbedit .js all
+duti -s com.barebones.bbedit .wkt all
+duti -s com.barebones.bbedit .csv all
+duti -s com.barebones.bbedit .dat all
+duti -s com.barebones.bbedit .xml all
+duti -s com.barebones.bbedit .json all
+duti -s com.barebones.bbedit .py all
+duti -s com.barebones.bbedit .tex all
+duti -s com.barebones.bbedit .lua all
+duti -s com.barebones.bbedit .vhdl all
+duti -s com.barebones.bbedit .yaml all
+duti -s com.barebones.bbedit .json all
+duti -s com.barebones.bbedit .py all
+duti -s com.barebones.bbedit .tex all
+
+brew uninstall duti
+brew cleanup>>/dev/null/
+
+## End File Defaults
+
+
+
 # Cleanup
 brew cleanup>/dev/null
-brew prune>/dev/null
 
 # Turn off shake mouse cursor to locate
 defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLocationMagnification -bool true
