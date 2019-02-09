@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.2
+# Version 1.2.1
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -73,7 +73,8 @@ brew cask install the-unarchiver
 
 brew install duti
 duti -s com.apple.Finder ftp
-echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, and tex to the current default application for txt"
+echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, md, txt, and tex to open in BBEdit"
+echo "Setting mp4, mp3, and m4a to open in VLC"
 
 duti -s com.barebones.bbedit .sh all
 duti -s com.barebones.bbedit .plist all
@@ -99,11 +100,16 @@ duti -s com.barebones.bbedit .lua all
 duti -s com.barebones.bbedit .vhdl all
 duti -s com.barebones.bbedit .yaml all
 duti -s com.barebones.bbedit .json all
+duti -s com.barebones.bbedit .md all
 duti -s com.barebones.bbedit .py all
+duti -s com.barebones.bbedit .txt all
 duti -s com.barebones.bbedit .tex all
+duti -s org.videolan.vlc .mp4 all
+duti -s org.videolan.vlc .mp3 all
+duti -s org.videolan.vlc .m4a all
 
 brew uninstall duti
-brew cleanup>>/dev/null/
+brew cleanup
 
 ## End File Defaults
 
