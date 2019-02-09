@@ -1,3 +1,4 @@
+#!/bin/sh
 brew install duti
 duti -s com.apple.Finder ftp
 echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, md, txt, and tex to open in BBEdit"
