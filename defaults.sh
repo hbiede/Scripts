@@ -114,10 +114,6 @@ brew cleanup
 ## End File Defaults
 
 
-
-# Cleanup
-brew cleanup>/dev/null
-
 # Turn off shake mouse cursor to locate
 defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLocationMagnification -bool true
 
