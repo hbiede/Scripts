@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.2.1
+# Version 1.2.2
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -74,6 +74,7 @@ brew cask install the-unarchiver
 brew install duti
 duti -s com.apple.Finder ftp
 echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, md, txt, and tex to open in BBEdit"
+echo "Setting CR2 to open in Preview"
 echo "Setting mp4, mp3, and m4a to open in VLC"
 
 duti -s com.barebones.bbedit .sh all
@@ -101,9 +102,11 @@ duti -s com.barebones.bbedit .vhdl all
 duti -s com.barebones.bbedit .yaml all
 duti -s com.barebones.bbedit .json all
 duti -s com.barebones.bbedit .md all
+duti -s com.barebones.bbedit .mf all
 duti -s com.barebones.bbedit .py all
 duti -s com.barebones.bbedit .txt all
 duti -s com.barebones.bbedit .tex all
+duti -s com.apple.Preview .cr2 all
 duti -s org.videolan.vlc .mp4 all
 duti -s org.videolan.vlc .mp3 all
 duti -s org.videolan.vlc .m4a all
@@ -113,6 +116,10 @@ brew cleanup
 
 ## End File Defaults
 
+
+
+# Cleanup
+brew cleanup>/dev/null
 
 # Turn off shake mouse cursor to locate
 defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLocationMagnification -bool true
