@@ -2,7 +2,7 @@
 brew install duti
 duti -s com.apple.Finder ftp
 echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, md, mf, txt, and tex to open in BBEdit"
-echo "Setting mp4, mp3, and m4a to open in VLC"
+echo "Setting mp4, mp3, m4a, and avi to open in VLC"
 
 duti -s com.barebones.bbedit .sh all
 duti -s com.barebones.bbedit .plist all
@@ -37,6 +37,7 @@ duti -s com.apple.Preview .cr2 all
 duti -s org.videolan.vlc .mp4 all
 duti -s org.videolan.vlc .mp3 all
 duti -s org.videolan.vlc .m4a all
+duti -s org.videolan.vlc .avi all
 
 brew uninstall duti
 brew cleanup
