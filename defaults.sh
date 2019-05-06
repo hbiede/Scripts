@@ -528,6 +528,8 @@ git clone https://github.com/hbiede/Lazy-Clock.git
 git clone https://github.com/hbiede/KSMO-MapRaid-Script.git
 git clone https://github.com/hbiede/ContactOutput.git
 cd ~/Documents/
+mkdir HBiede
+cd HBiede/
 git clone https://github.com/hbiede/Scripts.git
 ## end dev setup
 
