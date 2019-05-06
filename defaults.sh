@@ -521,6 +521,16 @@ end
 # Update All
 updater
 
+## setup dev environments
+mkdir -p ~/Desktop/Code/Personal\ Projects
+cd ~/Desktop/Code/Personal\ Projects/
+git clone https://github.com/hbiede/Lazy-Clock.git
+git clone https://github.com/hbiede/KSMO-MapRaid-Script.git
+git clone https://github.com/hbiede/ContactOutput.git
+cd ~/Documents/
+git clone https://github.com/hbiede/Scripts.git
+## end dev setup
+
 echo ""
 echo "Rebooting to Finalize Changes"
 sleep 5
