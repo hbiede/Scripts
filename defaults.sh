@@ -39,7 +39,7 @@ if ! hash fish 2>/dev/null; then
   fish;
 fi
 if ! hash ffmpeg 2>/dev/null; then
-  brew install ffmpeg --with-libvpx --with-webp --with-x265;
+  brew install ffmpeg --with-webp --with-x265;
 fi
 if ! hash youtube-dl 2>/dev/null; then
   brew install youtube-dl;
@@ -119,7 +119,6 @@ duti -s org.videolan.vlc .m4a all
 duti -s org.videolan.vlc .avi all
 
 brew uninstall duti
-brew cleanup
 
 ## End File Defaults
 
@@ -496,18 +495,22 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Alias Commands
+mkdir ~/.config/fish/functions
+touch ~/.config/fish/functions/show.fish
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown'"
 echo "# Defined in - @ line 0
 function show --description alias\ show=defaults\ write\ com.apple.finder\ AppleShowAllFiles\ -bool\ true\;\ killall\ Finder\;\ echo\ \'Hidden\ Files\ Shown\'
 	defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown' $argv;
 end
-" > ~/.config/fish/functions/hide.fish
+" > ~/.config/fish/functions/show.fish
+touch ~/.config/fish/functions/hide.fish
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden'"
 echo "# Defined in - @ line 0
 function hide --description alias\ hide=defaults\ write\ com.apple.finder\ AppleShowAllFiles\ -bool\ false\;\ killall\ Finder\;\ echo\ \'Hidden\ Files\ Hidden\'
 	defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden' $argv;
 end
-" > ~/.config/fish/functions/show.fish
+" > ~/.config/fish/functions/hide.fish
+touch ~/.config/fish/functions/updater.fish
 alias updater='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
 echo "# Defined in - @ line 0
 function updater --description 'alias updater=sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
