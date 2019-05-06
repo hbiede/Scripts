@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.0
+# Version 1.3.1
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -39,7 +39,7 @@ if ! hash fish 2>/dev/null; then
   fish;
 fi
 if ! hash ffmpeg 2>/dev/null; then
-  brew install ffmpeg --with-webp --with-x265;
+  brew install ffmpeg;
 fi
 if ! hash youtube-dl 2>/dev/null; then
   brew install youtube-dl;
