@@ -55,7 +55,6 @@ fi
 
 ## Install Apps
 brew cask install bbedit
-brew cask install adobe-creative-cloud
 brew cask install alfred
 brew cask install discord
 brew cask install omnifocus
