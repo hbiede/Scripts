@@ -499,21 +499,21 @@ touch ~/.config/fish/functions/show.fish
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown'"
 echo "# Defined in - @ line 0
 function show --description alias\ show=defaults\ write\ com.apple.finder\ AppleShowAllFiles\ -bool\ true\;\ killall\ Finder\;\ echo\ \'Hidden\ Files\ Shown\'
-	defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown' $argv;
+	defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder; echo 'Hidden Files Shown';
 end
 " > ~/.config/fish/functions/show.fish
 touch ~/.config/fish/functions/hide.fish
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden'"
 echo "# Defined in - @ line 0
 function hide --description alias\ hide=defaults\ write\ com.apple.finder\ AppleShowAllFiles\ -bool\ false\;\ killall\ Finder\;\ echo\ \'Hidden\ Files\ Hidden\'
-	defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden' $argv;
+	defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder; echo 'Hidden Files Hidden';
 end
 " > ~/.config/fish/functions/hide.fish
 touch ~/.config/fish/functions/updater.fish
-alias updater='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+alias updater='sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup'
 echo "# Defined in - @ line 0
-function updater --description 'alias updater=sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
-	sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup $argv;
+function updater --description 'alias updater=sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup'
+	sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup;
 end
 " > ~/.config/fish/functions/updater.fish
 
