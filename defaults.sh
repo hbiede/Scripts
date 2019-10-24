@@ -50,6 +50,9 @@ fi
 if ! hash nano 2>/dev/null; then
   brew install nano;
 fi
+if ! hash pdflatex 2>/dev/null; then
+  brew install basictex;
+fi
 
 
 
