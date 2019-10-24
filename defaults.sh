@@ -67,7 +67,6 @@ brew cask install sourcetree
 brew cask install caffeine
 brew cask install spectacle
 brew cask install intellij-idea
-mv /Applications/IntelliJ\ IDEA.app /Applications/IntelliJ.app
 brew cask install clion
 brew cask install qbittorrent
 brew cask install vlc
