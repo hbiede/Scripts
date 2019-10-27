@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.1
+# Version 1.3.2
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -286,6 +286,7 @@ killall Finder
 
 
 ## Dock
+echo \a
 echo "Wipe all (default) app icons from the Dock? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
