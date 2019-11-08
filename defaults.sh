@@ -514,8 +514,8 @@ end
 touch ~/.config/fish/functions/updater.fish
 alias updater='sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup'
 echo "# Defined in - @ line 0
-function updater --description 'alias updater=sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup'
-	sudo softwareupdate -i -a; brew update; brew upgrade; brew cask upgrade; brew cleanup;
+function updater --description 'alias updater=brew update; brew upgrade; brew cask upgrade; brew cleanup; sudo softwareupdate -i -a'
+	brew update; brew upgrade; brew cask upgrade; brew cleanup; sudo softwareupdate -i -a
 end
 " > ~/.config/fish/functions/updater.fish
 
