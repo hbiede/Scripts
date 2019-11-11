@@ -57,8 +57,10 @@ if ! hash pdflatex 2>/dev/null; then
 fi
 
 
-
+###############
 ## Install Apps
+###############
+
 brew cask install bbedit
 brew cask install alfred
 brew cask install discord
@@ -74,11 +76,15 @@ brew cask install clion
 brew cask install qbittorrent
 brew cask install vlc
 brew cask install the-unarchiver
+###################
 ## End Install Apps
+###################
 
 
 
+###############
 ## Default Apps
+###############
 
 brew install duti
 echo "Setting file default open-ers"
@@ -121,10 +127,15 @@ duti -s org.videolan.vlc .m4a all
 duti -s org.videolan.vlc .avi all
 
 brew uninstall duti
-
+####################
 ## End File Defaults
+####################
 
 
+
+#########
+## Basics
+#########
 
 # Cleanup
 brew cleanup>/dev/null
@@ -237,220 +248,6 @@ defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd
 # Disable Siri
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 
-# Limit Ad Tracking
-defaults write com.apple.AdLib forceLimitAdTracking -bool true
-
-
-
-## Finder
-
-# Set the Finder prefs for showing a few different volumes on the Desktop.
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredSearchViewStyle -string "Nlsv"
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
-# Search current folder by default
-defaults write com.apple.finder FXDefaultSearchScope SCcf
-
-# Show the home folder instead of all files when opening a new finder window
-defaults write com.apple.finder NewWindowTarget PfHm
-
-# Show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# Keep folders on top when sorting by name
-defaults write com.apple.finder _FXSortFoldersFirst -bool true
-
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
-# Enable snap-to-grid for icons on the desktop
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-
-# Set grid spacing for icons on the desktop
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 80" ~/Library/Preferences/com.apple.finder.plist
-
-# Set the size of icons on the desktop
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
-
-# Disable iCloud as default save location
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-killall Finder
-## End Finder
-
-
-## Dock
-echo \a
-echo "Wipe all (default) app icons from the Dock? (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  defaults write com.apple.dock persistent-apps -array
-fi
-
-# Set the icon size of Dock items to 50 pixels
-defaults write com.apple.dock tilesize -int 50
-
-# Lock the Dock size
-defaults write com.apple.dock size-immutable -bool true
-
-# Dock orientation: 'left', 'bottom', 'right'
-defaults write com.apple.dock "orientation" -string "bottom"
-
-# Show indicator lights for open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool true
-
-# Minimize windows into their application’s icon
-defaults write com.apple.dock minimize-to-application -bool true
-
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-defaults write com.apple.dashboard enabled-state -int 1
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
-
-# Don’t show recent applications in Dock
-defaults write com.apple.dock show-recents -bool false
-
-# Disable the Launchpad gesture (pinch with thumb and three fingers)
-defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
-
-# Set Menu Bar
-defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool false
-defaults write com.apple.systemuiserver menuExtras -array \
-    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-    "/System/Library/CoreServices/Menu Extras/Clock.menu"
-
-# Show Percent Battery in menu bar
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
-
-# Flash the time separators
-defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
-
-# Analog menu bar clock
-defaults write com.apple.menuextra.clock IsAnalog -bool false
-
-killall Dock
-## End Dock
-
-
-## Calendar
-
-# Start week on:
-# 0: Sunday
-# 6: Saturday
-defaults write com.apple.iCal "first day of week" -int 0
-
-# Scroll in week view by:
-# 0: Day
-# 1: Week
-# 2: Week, Stop on Today
-defaults write com.apple.iCal "scroll by weeks in week view" -int 1
-
-# Show Calendar Sidebar
-defaults write com.apple.iCal CalendarSidebarShown -bool true
-
-# Day starts at (in minutes):
-defaults write com.apple.iCal "first minute of work hours" -int 480
-
-# Day ends at (in minutes):
-defaults write com.apple.iCal "last minute of work hours" -int 1200
-
-# Turn on timezone support
-defaults write com.apple.iCal "TimeZone support enabled" -bool true
-
-# Show events in year view
-defaults write com.apple.iCal "Show heat map in Year View" -bool true
-
-# Ask before sending changes to events
-defaults write com.apple.iCal WarnBeforeSendingInvitations -bool true
-
-# Set display length for Calendar
-defaults write com.apple.iCal "number of hours displayed" -int 16
-
-killall Calendar>/dev/null
-## End Calendar
-
-
-## Safari
-
-# Set up Safari for development
-defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool
-
-# Enable continuous spellchecking
-defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
-
-# Disable auto-correct
-defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
-
-# Warn about fraudulent websites
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-# Disable Java
-defaults write com.apple.Safari WebKitJavaEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
-
-# Block pop-up windows
-defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
-
-killall Safari>/dev/null
-## End Safari
-
-
-## Contacts
-
-# Enable the debug menu in Address Book
-defaults write com.apple.AddressBook ABShowDebugMenu -bool true
-
-# Sort Order for Contacts
-defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingLastName sortingFirstName"
-
-# Show full names in Contacts
-defaults write com.apple.AddressBook ABShortNameStyle -int 0
-
-# Export notes in vCards
-defaults write com.apple.AddressBook ABIncludeNotesInVCard -bool true
-
-# Export photos in vCards
-defaults write com.apple.AddressBook ABIncludePhotosInVCard -bool true
-
-# Show first name:
-# 1: Before last name
-# 2: Following last name
-defaults write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
-
-# Don't prefer nicknames
-defaults write NSGlobalDomain NSPersonNameDefaultShouldPreferNicknamesPreference -bool false
-
-killall Contacts>/dev/null
-## End Contacts
-###########
-## Terminal
-###########
-
-# Set default display settings of Terminal 
-plutil -replace Window\ Settings.Pro.rowCount -integer 32 ~/Library/Preferences/com.apple.Terminal.plist
-plutil -replace Window\ Settings.Pro.columnCount -integer 118 ~/Library/Preferences/com.apple.Terminal.plist
-defaults write com.apple.Terminal Startup\ Window\ Settings -string Pro
-###############
-## End Terminal
-###############
-
-
-
 # Change indexing order and disable some search results for Spotlight
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
 # 	MENU_DEFINITION
@@ -533,6 +330,247 @@ end
 
 # Update All
 updater
+#############
+## End Basics
+#############
+
+
+
+#########
+## Finder
+#########
+
+# Set the Finder prefs for showing a few different volumes on the Desktop.
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredSearchViewStyle -string "Nlsv"
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Search current folder by default
+defaults write com.apple.finder FXDefaultSearchScope SCcf
+
+# Show the home folder instead of all files when opening a new finder window
+defaults write com.apple.finder NewWindowTarget PfHm
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Enable snap-to-grid for icons on the desktop
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+# Set grid spacing for icons on the desktop
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 80" ~/Library/Preferences/com.apple.finder.plist
+
+# Set the size of icons on the desktop
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+
+# Disable iCloud as default save location
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+killall Finder
+#############
+## End Finder
+#############
+
+
+
+#######
+## Dock
+#######
+
+echo \a
+echo "Wipe all (default) app icons from the Dock? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.dock persistent-apps -array
+fi
+
+# Set the icon size of Dock items to 50 pixels
+defaults write com.apple.dock tilesize -int 50
+
+# Lock the Dock size
+defaults write com.apple.dock size-immutable -bool true
+
+# Dock orientation: 'left', 'bottom', 'right'
+defaults write com.apple.dock "orientation" -string "bottom"
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+defaults write com.apple.dashboard enabled-state -int 1
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Disable the Launchpad gesture (pinch with thumb and three fingers)
+defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+
+# Set Menu Bar
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool false
+defaults write com.apple.systemuiserver menuExtras -array \
+    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+    "/System/Library/CoreServices/Menu Extras/Clock.menu"
+
+# Show Percent Battery in menu bar
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# Flash the time separators
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+
+# Analog menu bar clock
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+
+killall Dock
+###########
+## End Dock
+###########
+
+
+
+###########
+## Calendar
+###########
+
+# Start week on:
+# 0: Sunday
+# 6: Saturday
+defaults write com.apple.iCal "first day of week" -int 0
+
+# Scroll in week view by:
+# 0: Day
+# 1: Week
+# 2: Week, Stop on Today
+defaults write com.apple.iCal "scroll by weeks in week view" -int 1
+
+# Show Calendar Sidebar
+defaults write com.apple.iCal CalendarSidebarShown -bool true
+
+# Day starts at (in minutes):
+defaults write com.apple.iCal "first minute of work hours" -int 480
+
+# Day ends at (in minutes):
+defaults write com.apple.iCal "last minute of work hours" -int 1200
+
+# Turn on timezone support
+defaults write com.apple.iCal "TimeZone support enabled" -bool true
+
+# Show events in year view
+defaults write com.apple.iCal "Show heat map in Year View" -bool true
+
+# Ask before sending changes to events
+defaults write com.apple.iCal WarnBeforeSendingInvitations -bool true
+
+# Set display length for Calendar
+defaults write com.apple.iCal "number of hours displayed" -int 16
+
+killall Calendar>/dev/null
+###############
+## End Calendar
+###############
+
+
+
+#########
+## Safari
+#########
+
+# Set up Safari for development
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool
+
+# Enable continuous spellchecking
+defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
+
+# Disable auto-correct
+defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+
+# Warn about fraudulent websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+
+# Disable Java
+defaults write com.apple.Safari WebKitJavaEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+
+# Block pop-up windows
+defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
+
+killall Safari>/dev/null
+#############
+## End Safari
+#############
+
+
+
+###########
+## Contacts
+###########
+
+# Enable the debug menu in Address Book
+defaults write com.apple.AddressBook ABShowDebugMenu -bool true
+
+# Sort Order for Contacts
+defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingLastName sortingFirstName"
+
+# Show full names in Contacts
+defaults write com.apple.AddressBook ABShortNameStyle -int 0
+
+# Export notes in vCards
+defaults write com.apple.AddressBook ABIncludeNotesInVCard -bool true
+
+# Export photos in vCards
+defaults write com.apple.AddressBook ABIncludePhotosInVCard -bool true
+
+# Show first name:
+# 1: Before last name
+# 2: Following last name
+defaults write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
+
+# Don't prefer nicknames
+defaults write NSGlobalDomain NSPersonNameDefaultShouldPreferNicknamesPreference -bool false
+
+killall Contacts>/dev/null
+###############
+## End Contacts
+###############
+
+
+###########
+## Terminal
+###########
+
+# Set default display settings of Terminal 
+plutil -replace Window\ Settings.Pro.rowCount -integer 32 ~/Library/Preferences/com.apple.Terminal.plist
+plutil -replace Window\ Settings.Pro.columnCount -integer 118 ~/Library/Preferences/com.apple.Terminal.plist
+defaults write com.apple.Terminal Startup\ Window\ Settings -string Pro
+###############
+## End Terminal
+###############
+
+
 
 ## setup dev environments
 mkdir -p ~/Desktop/Code/Personal\ Projects
