@@ -51,6 +51,9 @@ if ! hash nano 2>/dev/null; then
 fi
 if ! hash pdflatex 2>/dev/null; then
   brew install basictex;
+  # unfinished. I don't remember all of them that I installed
+  sudo tlmgr install babel;
+  sudo tlmgr install minted;
 fi
 
 
