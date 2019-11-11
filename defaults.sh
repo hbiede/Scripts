@@ -437,6 +437,17 @@ defaults write NSGlobalDomain NSPersonNameDefaultShouldPreferNicknamesPreference
 
 killall Contacts>/dev/null
 ## End Contacts
+###########
+## Terminal
+###########
+
+# Set default display settings of Terminal 
+plutil -replace Window\ Settings.Pro.rowCount -integer 32 ~/Library/Preferences/com.apple.Terminal.plist
+plutil -replace Window\ Settings.Pro.columnCount -integer 118 ~/Library/Preferences/com.apple.Terminal.plist
+defaults write com.apple.Terminal Startup\ Window\ Settings -string Pro
+###############
+## End Terminal
+###############
 
 
 
