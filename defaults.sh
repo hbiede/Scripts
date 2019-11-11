@@ -1,5 +1,5 @@
 #!/bin/sh
-# Adapted from tibr
+# Adapted from tibr by Hundter Biede
 # https://github.com/tibr/dotfiles/blob/master/osx/set-defaults.sh
 # 
 # Originally inspired by zach holman
