@@ -28,7 +28,7 @@ defaults write NSGlobalDomain AppleAccentColor -int 0
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
-# Install Homebrew, ffmpeg, youtube-dl, fish, wget, and nano if not installed
+# Install Homebrew, ffmpeg, youtube-dl, fish, wget, nano, and LaTeX if not installed
 if ! hash brew 2>/dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
 fi
@@ -81,11 +81,9 @@ brew cask install the-unarchiver
 ## Default Apps
 
 brew install duti
-duti -s com.apple.Finder ftp
-echo "Setting sh, plist, m, h, cpp, c, java, php, swift, html, htm, css, js, wkt, csv, dat, xml, json, py, lua, vhdl, yaml, md, txt, and tex to open in BBEdit"
-echo "Setting CR2 to open in Preview"
-echo "Setting mp4, mp3, m4a, and avi to open in VLC"
+echo "Setting file default open-ers"
 
+duti -s com.apple.Finder ftp
 duti -s com.barebones.bbedit .sh all
 duti -s com.barebones.bbedit .plist all
 duti -s com.barebones.bbedit .m all
