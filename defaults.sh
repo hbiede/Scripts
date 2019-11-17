@@ -76,6 +76,7 @@ brew cask install clion
 brew cask install qbittorrent
 brew cask install vlc
 brew cask install the-unarchiver
+brew cask install turbo-boost-switcher
 ###################
 ## End Install Apps
 ###################
