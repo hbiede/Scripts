@@ -572,6 +572,28 @@ defaults write com.apple.Terminal Startup\ Window\ Settings -string Pro
 ###############
 
 
+############
+## Touch Bar
+############
+defaults write com.apple.controlstrip FullCustomized -array \
+    "com.apple.system.mission-control" \
+    "NSTouchBarItemIdentifierFlexibleSpace" \
+    "com.apple.system.group.brightness" \
+    "com.apple.system.group.keyboard-brightness" \
+    "com.apple.system.group.media" \
+    "com.apple.system.group.volume"
+
+defaults write com.apple.controlstrip MiniCustomized -array \
+    "com.apple.system.mission-control" \
+    "com.apple.system.brightness" \
+    "com.apple.system.volume" \
+    "com.apple.system.mute"
+
+killall ControlStrip
+################
+## End Touch Bar
+################
+
 
 ## setup dev environments
 mkdir -p ~/Desktop/Code/Personal\ Projects
