@@ -307,6 +307,9 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Don't prompt to start time machine on connection to new Hard Drives
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
+# Install Terminal fonts system wide
+cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf ~/Library/Fonts/
+
 # Alias Commands
 mkdir ~/.config/fish/functions
 touch ~/.config/fish/functions/show.fish
