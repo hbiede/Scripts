@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.2
+# Version 1.3.3
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -130,18 +130,18 @@ duti -s org.videolan.vlc .m4a all
 duti -s org.videolan.vlc .avi all
 
 brew uninstall duti
+
+# Cleanup
+brew cleanup > /dev/null
 ####################
 ## End File Defaults
 ####################
 
 
 
-#######
-## Misc
-#######
-
-# Cleanup
-brew cleanup>/dev/null
+#########
+## System
+#########
 
 # Turn off shake mouse cursor to locate
 defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLocationMagnification -bool true
@@ -309,6 +309,13 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Install Terminal fonts system wide
 cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf ~/Library/Fonts/
+#############
+## End System
+#############
+
+#######
+## Fish
+#######
 
 # Alias Commands
 mkdir ~/.config/fish/functions
@@ -333,6 +340,14 @@ function updater --description 'alias updater=brew update; brew upgrade; brew ca
 	brew update; brew upgrade; brew cask upgrade; brew cleanup; sudo softwareupdate -i -a
 end
 " > ~/.config/fish/functions/updater.fish
+###########
+## End Fish
+###########
+
+
+#########
+## BBEdit
+#########
 
 # Set the color scheme of BBEdit
 defaults write com.barebones.bbedit SelectedColorSchemeNameDarkMode -string "Xcode Dark"
@@ -343,13 +358,9 @@ defaults write com.barebones.bbedit EditorAutoExpandTabs -int 1
 # Set the BBEdit font to SF Mono
 defaults write com.barebones.bbedit BBEditorFont -data "62706c6973743030d4010203040506070a582476657273696f6e592461726368697665725424746f7058246f626a6563747312000186a05f100f4e534b657965644172636869766572d1080954726f6f748001a90b0c111b1c1d1e1f2655246e756c6cd20d0e0f105624636c6173735f101a5549466f6e7444657363726970746f724174747269627574657380088002d312130d14171a574e532e6b6579735a4e532e6f626a65637473a2151680038004a218198005800680075f10134e53466f6e7453697a654174747269627574655f10134e53466f6e744e616d654174747269627574652340280000000000005e53464d6f6e6f2d526567756c6172d2202122235a24636c6173736e616d655824636c61737365735f10134e534d757461626c6544696374696f6e617279a32224255c4e5344696374696f6e617279584e534f626a656374d2202127285f10105549466f6e7444657363726970746f72a3292a255f10105549466f6e7444657363726970746f725f10104e53466f6e7444657363726970746f7200080011001a00240029003200370049004c00510053005d00630068006f008c008e00900097009f00aa00ad00af00b100b400b600b800ba00d000e600ef00fe0103010e0117012d0131013e0147014c015f016301760000000000000201000000000000002b00000000000000000000000000000189"
 defaults write com.barebones.bbedit BBPrintingFont -data "62706c6973743030d4010203040506070a582476657273696f6e592461726368697665725424746f7058246f626a6563747312000186a05f100f4e534b657965644172636869766572d1080954726f6f748001a90b0c111b1c1d1e1f2655246e756c6cd20d0e0f105624636c6173735f101a5549466f6e7444657363726970746f724174747269627574657380088002d312130d14171a574e532e6b6579735a4e532e6f626a65637473a2151680038004a218198005800680075f10134e53466f6e7453697a654174747269627574655f10134e53466f6e744e616d654174747269627574652340280000000000005e53464d6f6e6f2d526567756c6172d2202122235a24636c6173736e616d655824636c61737365735f10134e534d757461626c6544696374696f6e617279a32224255c4e5344696374696f6e617279584e534f626a656374d2202127285f10105549466f6e7444657363726970746f72a3292a255f10105549466f6e7444657363726970746f725f10104e53466f6e7444657363726970746f7200080011001a00240029003200370049004c00510053005d00630068006f008c008e00900097009f00aa00ad00af00b100b400b600b800ba00d000e600ef00fe0103010e0117012d0131013e0147014c015f016301760000000000000201000000000000002b00000000000000000000000000000189"
-
-
-# Update All
-updater
-###########
-## End Misc
-###########
+#############
+## End BBEdit
+#############
 
 
 
@@ -610,6 +621,9 @@ killall ControlStrip
 ## End Touch Bar
 ################
 
+
+# Update All
+updater
 
 ## setup dev environments
 mkdir -p ~/Desktop/Code/Personal\ Projects
