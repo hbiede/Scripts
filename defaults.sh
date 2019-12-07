@@ -198,6 +198,7 @@ defaults write NSGlobalDomain AppleShowScrollBars WhenScrolling
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
+defaults write NSGlobalDomain com.apple.mouse.scaling -real 1
 defaults write NSGlobalDomain com.apple.sound.beep.flash -int 0
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
@@ -225,6 +226,7 @@ defaults -currentHost write NSGlobalDomain AppleShowScrollBars WhenScrolling
 defaults -currentHost write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
 defaults -currentHost write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults -currentHost write NSGlobalDomain NSPersonNameDefaultDisplayNameOrder -int 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.scaling -real 1
 defaults -currentHost write NSGlobalDomain com.apple.sound.beep.flash -int 0
 defaults -currentHost write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.forceClick -bool false
