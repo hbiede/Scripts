@@ -186,6 +186,13 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -int 1
 defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 0
+defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string "TwoButton"
+defaults write com.apple.AppleMultitouchMouse MouseHorizontalScroll -bool true
+defaults write com.apple.AppleMultitouchMouse MouseMomentumScroll -bool true
+defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -int 1
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
+defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll -bool true
 defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
 defaults write NSGlobalDomain AppleShowScrollBars WhenScrolling
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
@@ -626,17 +633,17 @@ killall ControlStrip
 updater
 
 ## setup dev environments
-mkdir -p ~/Desktop/Code/Personal\ Projects
-cd ~/Desktop/Code/Personal\ Projects/
-git clone https://github.com/hbiede/Lazy-Clock.git
-git clone https://github.com/hbiede/KSMO-MapRaid-Script.git
-git clone https://github.com/hbiede/ContactOutput.git
-cd ~/Documents/
-git clone https://github.com/hbiede/Contacts.git
-git clone https://github.com/hbiede/Scripts.git
-## end dev setup
-
-echo ""
-echo "Rebooting to Finalize Changes"
-sleep 5
-sudo reboot
+#mkdir -p ~/Desktop/Code/Personal\ Projects
+#cd ~/Desktop/Code/Personal\ Projects/
+#git clone https://github.com/hbiede/Lazy-Clock.git
+#git clone https://github.com/hbiede/KSMO-MapRaid-Script.git
+#git clone https://github.com/hbiede/ContactOutput.git
+#cd ~/Documents/
+#git clone https://github.com/hbiede/Contacts.git
+#git clone https://github.com/hbiede/Scripts.git
+### end dev setup
+#
+#echo ""
+#echo "Rebooting to Finalize Changes"
+#sleep 5
+#sudo reboot
