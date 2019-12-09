@@ -429,7 +429,7 @@ echo \a
 echo "Wipe all (default) app icons from the Dock? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  defaults write com.apple.dock persistent-apps -array
+  defaults write com.apple.dock persistent-apps -array;
 fi
 
 # Set the icon size of Dock items to 50 pixels
