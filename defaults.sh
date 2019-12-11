@@ -49,11 +49,23 @@ fi
 if ! hash nano 2>/dev/null; then
   brew install nano;
 fi
+if ! hash python 2>/dev/null; then
+  brew install python;
+fi
 if ! hash pdflatex 2>/dev/null; then
   brew cask install basictex;
-  # unfinished. I don't remember all of them that I installed
+  tlmgr init-usertree
+  sudo tlmgr update --self;
+  sudo tlmgr update --all;
   sudo tlmgr install babel;
   sudo tlmgr install minted;
+  sudo tlmgr install wrapfig;
+  sudo tlmgr install letltxmacro;
+  sudo tlmgr install fvextra;
+  sudo tlmgr install xstring;
+  sudo tlmgr install framed;
+  sudo tlmgr install pygmentex;
+  sudo easy_install Pygments;
 fi
 
 
