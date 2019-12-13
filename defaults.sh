@@ -654,6 +654,8 @@ git clone https://github.com/hbiede/ContactOutput.git
 cd ~/Documents/
 git clone https://github.com/hbiede/Contacts.git
 git clone https://github.com/hbiede/Scripts.git
+cd ~/Music/
+git clone https://github.com/hbiede/Local-Music.git
 ### end dev setup
 
 echo ""
