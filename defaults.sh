@@ -676,6 +676,29 @@ killall ControlStrip
 ## End Touch Bar
 ################
 
+# git
+echo "[user]
+	name = hbiede
+	email = 6586509+hbiede@users.noreply.github.com
+[core]
+	excludesfile = /Users/hbiede/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/hbiede/.stCommitMsg
+" > ~/.gitconfig
+
+echo "*~
+.DS_Store
+./**/.idea
+.idea/
+./**/_minted-*/
+.project
+.classpath" > ~/.gitignore_global
 
 # Update All
 updater
