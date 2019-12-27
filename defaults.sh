@@ -6,7 +6,10 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.3
+# Version 1.3.4
+
+# Ask for the administrator password upfront
+sudo -v
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
@@ -37,20 +40,11 @@ if ! hash fish 2>/dev/null; then
   echo "/usr/local/bin/fish" | sudo tee -a /etc/shells;
   chsh -s /usr/local/bin/fish;
 fi
-if ! hash ffmpeg 2>/dev/null; then
-  brew install ffmpeg;
-fi
-if ! hash youtube-dl 2>/dev/null; then
-  brew install youtube-dl;
-fi
 if ! hash wget 2>/dev/null; then
   brew install wget;
 fi
 if ! hash nano 2>/dev/null; then
   brew install nano;
-fi
-if ! hash python 2>/dev/null; then
-  brew install python;
 fi
 if ! hash pdflatex 2>/dev/null; then
   brew cask install basictex;
@@ -67,6 +61,13 @@ if ! hash pdflatex 2>/dev/null; then
   sudo tlmgr install pygmentex;
   sudo easy_install Pygments;
 fi
+
+# update important utils
+brew install grep;
+brew install php;
+brew install python;
+brew install ffmpeg;
+brew install youtube-dl;
 
 
 ###############
@@ -168,8 +169,12 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticDownl
 
 # Expand Save/Print Dialog Boxes by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -204,6 +209,7 @@ defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -in
 defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
 defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll -bool true
+
 defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
 defaults write NSGlobalDomain AppleShowScrollBars WhenScrolling
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
@@ -270,6 +276,15 @@ defaults write ~/Library/Preferences/ByHost/com.apple.coreservices.useractivityd
 
 # Disable Siri
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+# Set the time zone
+sudo systemsetup -settimezone "America/Chicago" > /dev/null
+
+# Restart automatically on power loss
+sudo pmset -a autorestart 1
 
 # Change indexing order and disable some search results for Spotlight
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
@@ -400,6 +415,13 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # Search current folder by default
 defaults write com.apple.finder FXDefaultSearchScope SCcf
 
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
 # Show the home folder instead of all files when opening a new finder window
 defaults write com.apple.finder NewWindowTarget PfHm
 
@@ -411,6 +433,12 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
 
 # Enable snap-to-grid for icons on the desktop
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
@@ -491,6 +519,13 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 
 # Analog menu bar clock
 defaults write com.apple.menuextra.clock IsAnalog -bool false
+
+# Set desktop image to El Cap
+mkdir -p ~/Library/Application\ Support/DesktopImageDownload/
+curl http://512pixels.net/downloads/macos-wallpapers/10-11.jpg > ~/Library/Application\ Support/DesktopImageDownload/el_cap.jpg
+if test -f ~/Library/Application\ Support/DesktopImageDownload/el_cap.jpg; then
+    sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '~/Library/Application Support/DesktopImageDownload/el_cap.jpg'";
+fi
 
 killall Dock
 ###########
