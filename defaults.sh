@@ -479,7 +479,7 @@ defaults write com.apple.dock tilesize -int 50
 defaults write com.apple.dock size-immutable -bool true
 
 # Dock orientation: 'left', 'bottom', 'right'
-defaults write com.apple.dock "orientation" -string "bottom"
+defaults write com.apple.dock orientation left
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
