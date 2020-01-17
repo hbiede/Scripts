@@ -431,9 +431,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
 # show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
