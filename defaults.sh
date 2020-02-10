@@ -665,8 +665,9 @@ defaults write com.apple.controlstrip FullCustomized -array \
 defaults write com.apple.controlstrip MiniCustomized -array \
     "com.apple.system.mission-control" \
     "com.apple.system.brightness" \
-    "com.apple.system.volume" \
-    "com.apple.system.mute"
+    "com.apple.system.mute" \
+    "com.apple.system.volume"
+    
 
 killall ControlStrip
 ################
