@@ -211,6 +211,7 @@ defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -in
 defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll -bool true
 
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" -string "@v"
 defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
 defaults write NSGlobalDomain AppleShowScrollBars WhenScrolling
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
@@ -239,6 +240,8 @@ defaults write NSGlobalDomain com.apple.trackpad.threeFingerVertSwipeGesture -in
 defaults write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 0
 defaults write NSGlobalDomain com.apple.trackpad.twoFingerDoubleTapGesture -int 0
 defaults write NSGlobalDomain com.apple.trackpad.twoFingerFromRightEdgeSwipeGesture -int 0
+
+defaults -currentHost write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" -string "@v"
 defaults -currentHost write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
 defaults -currentHost write NSGlobalDomain AppleShowScrollBars WhenScrolling
 defaults -currentHost write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
