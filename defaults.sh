@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.7
+# Version 1.3.8
 
 # Ask for the administrator password upfront
 sudo -v
@@ -688,9 +688,14 @@ git clone https://github.com/hbiede/ContactOutput.git
 cd ~/Documents/
 git clone https://github.com/hbiede/Contacts.git
 git clone https://github.com/hbiede/Scripts.git
+## end dev setup
+
+## fun gits
 cd ~/Music/
 git clone https://github.com/hbiede/Local-Music.git
-### end dev setup
+cd ~/Library/Application\ Support/
+git clone https://github.com/hbiede/factorio.git
+## end fun gits
 
 echo ""
 echo "Rebooting to Finalize Changes"
