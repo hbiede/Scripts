@@ -69,6 +69,7 @@ brew install php;
 brew install python;
 brew install ffmpeg;
 brew install youtube-dl;
+brew install hub;
 
 
 ###############
