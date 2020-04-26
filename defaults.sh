@@ -31,7 +31,7 @@ defaults write NSGlobalDomain AppleAccentColor -int 0
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
-# Install Homebrew, ffmpeg, youtube-dl, fish, wget, nano, and LaTeX if not installed
+# Install Homebrew, fish, wget, nano, and LaTeX if not installed
 if ! hash brew 2>/dev/null; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
 fi
