@@ -672,13 +672,139 @@ echo "[user]
 	template = /Users/hbiede/.stCommitMsg
 " > ~/.gitconfig
 
-echo "*~
-.DS_Store
-./**/.idea
-.idea/
-./**/_minted-*/
+echo "# Backup files
+*~
+
+# Binaries for programs and plugins
+*.class
+*.exe
+*.dll
+*.so
+*.dylib
+__pycache__/
+./**/__pycache__/
+**/bin
+**/out/
+**/target/
+**/build/
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# IntelliJ
+**/.idea/
+
+# Eclipse
+.classpath
 .project
-.classpath" > ~/.gitignore_global
+
+# Mac file system metadata
+.DS_Store
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# LaTeX
+*.aux
+*.toc
+*.bbl
+*.blg
+*.out
+*.run.xml
+*.lof
+*.lot
+*.fls
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
+.pdf # If empty string is given to generator
+
+## LaTeX - Beamer
+*.nav
+*.pre
+*.snm
+*.vrb
+
+## LaTeX - Glossaries
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.glstex
+
+## LaTeX - Minted
+**/_minted-*/
+*.pyg
+
+# Ruby
+*.gem
+*.rbc
+
+# CMake
+cmake-build-*/
+
+# C Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Jupyter
+.ipynb_checkpoints
+**/.ipynb_checkpoints/*
+**/profile_default/
+ipython_config.py
+
+# iOS App packaging
+*.ipa
+
+# XCode User settings
+**/xcuserdata/
+
+# Fastlane - Automated XCode screenshot tool
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots/**/*.png
+**/fastlane/test_output
+
+# PuTTY Private key
+*.ppk
+
+# SSH
+**/.ssh/id_*
+**/.ssh/*_id_*
+**/.ssh/known_hosts" > ~/.gitignore_global
 
 # Update All
 updater
