@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.8
+# Version 1.3.9
 
 # Ask for the administrator password upfront
 sudo -v
@@ -65,6 +65,7 @@ fi
 
 # update important utils
 brew install grep;
+brew install golang;
 brew install php;
 brew install python;
 brew install ffmpeg;
@@ -88,6 +89,9 @@ brew cask install caffeine
 brew cask install spectacle
 brew cask install intellij-idea
 brew cask install clion
+brew cask install goland
+brew cask install pycharm
+brew cask install rubymine
 brew cask install qbittorrent
 brew cask install vlc
 brew cask install the-unarchiver
@@ -446,7 +450,8 @@ killall Finder
 echo \a
 echo "Wipe all (default) app icons from the Dock? (y/n)"
 read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+if [[ $response =~ ^([yY]([eE][sS])?)$ ]]
+then
   defaults write com.apple.dock persistent-apps -array;
 fi
 
@@ -484,6 +489,8 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Set Menu Bar
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool false
+defaults write com.apple.TextInputMenuAgent "NSStatusItem Visible Item-0" -bool false
+defaults write com.apple.TextInputMenu "visible" -bool false
 defaults write com.apple.systemuiserver menuExtras -array \
     "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
     "/System/Library/CoreServices/Menu Extras/Battery.menu" \
@@ -505,7 +512,7 @@ if test -f ~/Library/Application\ Support/DesktopImageDownload/el_cap.jpg; then
     sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '~/Library/Application Support/DesktopImageDownload/el_cap.jpg'";
 fi
 
-killall Dock
+killall Dock>/dev/null/
 ###########
 ## End Dock
 ###########
@@ -560,7 +567,7 @@ killall Calendar>/dev/null
 #########
 
 # Set up Safari for development
-defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
 
 # Enable continuous spellchecking
 defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
@@ -626,7 +633,7 @@ killall Contacts>/dev/null
 # Set default display settings of Terminal 
 plutil -replace Window\ Settings.Pro.rowCount -integer 32 ~/Library/Preferences/com.apple.Terminal.plist
 plutil -replace Window\ Settings.Pro.columnCount -integer 118 ~/Library/Preferences/com.apple.Terminal.plist
-defaults write com.apple.Terminal Startup\ Window\ Settings -string Pro
+defaults write com.apple.Terminal Startup\ Window\ Settings -string "Pro"
 ###############
 ## End Terminal
 ###############
@@ -666,11 +673,6 @@ echo "[user]
 	autocrlf = input
 	editor = nano
 	ignoreCase = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [branch]
 	autosetuprebase = always
 " > ~/.gitconfig
