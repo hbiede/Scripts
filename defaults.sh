@@ -804,25 +804,22 @@ ipython_config.py
 **/.ssh/*_id_*
 **/.ssh/known_hosts" > ~/.gitignore_global
 
-# Update All
-updater
-
 ## setup dev environments
 mkdir -p ~/Desktop/Code/Personal\ Projects
 cd ~/Desktop/Code/Personal\ Projects/
-git clone https://github.com/hbiede/Lazy-Clock.git
-git clone https://github.com/hbiede/KSMO-MapRaid-Script.git
-git clone https://github.com/hbiede/ContactOutput.git
+git clone git@github.com:hbiede/Lazy-Clock.git
+git clone git@github.com:hbiede/Layer-Saver-Script.git
+git clone git@github.com:hbiede/portfolio.git
 cd ~/Documents/
-git clone https://github.com/hbiede/Contacts.git
-git clone https://github.com/hbiede/Scripts.git
+git clone git@github.com:hbiede/Contacts.git
+git clone git@github.com:hbiede/Scripts.git
 ## end dev setup
 
 ## fun gits
 cd ~/Music/
-git clone https://github.com/hbiede/Local-Music.git
+git clone git@github.com:hbiede/Local-Music.git
 cd ~/Library/Application\ Support/
-git clone https://github.com/hbiede/factorio.git
+git clone git@github.com:hbiede/factorio.git
 ## end fun gits
 
 echo ""
