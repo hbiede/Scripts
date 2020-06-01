@@ -505,13 +505,6 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 # Analog menu bar clock
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 
-# Set desktop image to El Cap
-mkdir -p ~/Library/Application\ Support/DesktopImageDownload/
-curl http://512pixels.net/downloads/macos-wallpapers/10-11.jpg > ~/Library/Application\ Support/DesktopImageDownload/el_cap.jpg
-if test -f ~/Library/Application\ Support/DesktopImageDownload/el_cap.jpg; then
-    sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '~/Library/Application Support/DesktopImageDownload/el_cap.jpg'";
-fi
-
 killall Dock>/dev/null/
 ###########
 ## End Dock
