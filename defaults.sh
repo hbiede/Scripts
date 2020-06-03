@@ -64,6 +64,7 @@ if ! hash pdflatex 2>/dev/null; then
 fi
 
 # update important utils
+brew install cmake;
 brew install grep;
 brew install golang;
 brew install php;
