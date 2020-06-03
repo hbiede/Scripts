@@ -11,25 +11,11 @@
 # Ask for the administrator password upfront
 sudo -v
 
-# Prevent System Prefs from breaking anything
-killall "System Preferences"
 
-# Show the ~/Library folder.
-chflags nohidden ~/Library
 
-# Green text highlighting
-defaults write com.apple.finder AppleOtherHighlightColor "0.184314 0.863235 0.321939"
-defaults write com.apple.systempreferences AppleOtherHighlightColor "0.184314 0.863235 0.321939"
-defaults write NSGlobalDomain AppleHighlightColor "0.184314 0.863235 0.321939 Other"
-defaults -currentHost write NSGlobalDomain AppleHighlightColor "0.184314 0.863235 0.321939 Other"
-
-# Dark Mode w/ Red accents
-defaults write NSGlobalDomain AppleInterfaceStyle Dark
-defaults write NSGlobalDomain AppleAccentColor -int 0
-
-# Set Key Repeats Appropriately
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-defaults write NSGlobalDomain KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+###################
+## Install Programs
+###################
 
 # Install Homebrew, fish, wget, nano, and LaTeX if not installed
 if ! hash brew 2>/dev/null; then
@@ -51,13 +37,7 @@ if ! hash pdflatex 2>/dev/null; then
   tlmgr init-usertree
   sudo tlmgr update --self;
   sudo tlmgr update --all;
-  sudo tlmgr install babel;
   sudo tlmgr install minted;
-  sudo tlmgr install wrapfig;
-  sudo tlmgr install letltxmacro;
-  sudo tlmgr install fvextra;
-  sudo tlmgr install xstring;
-  sudo tlmgr install framed;
   sudo tlmgr install pygmentex;
   sudo easy_install Pygments;
   sudo tlmgr install biblatex;
@@ -72,6 +52,10 @@ brew install python;
 brew install ffmpeg;
 brew install youtube-dl;
 brew install hub;
+#######################
+## End Install Programs
+#######################
+
 
 
 ###############
@@ -164,6 +148,23 @@ brew cleanup > /dev/null
 #########
 ## System
 #########
+
+# Prevent System Prefs from breaking anything
+killall "System Preferences"
+
+# Green text highlighting
+defaults write com.apple.finder AppleOtherHighlightColor "0.184314 0.863235 0.321939"
+defaults write com.apple.systempreferences AppleOtherHighlightColor "0.184314 0.863235 0.321939"
+defaults write NSGlobalDomain AppleHighlightColor "0.184314 0.863235 0.321939 Other"
+defaults -currentHost write NSGlobalDomain AppleHighlightColor "0.184314 0.863235 0.321939 Other"
+
+# Dark Mode w/ Red accents
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
+defaults write NSGlobalDomain AppleAccentColor -int 0
+
+# Set Key Repeats Appropriately
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 # Turn off shake mouse cursor to locate
 defaults write ~/Library/Preferences/.GlobalPreferences.plist CGDisableCursorLocationMagnification -bool true
@@ -379,6 +380,12 @@ mkdir ~/Library/Application\ Support/BBEdit/Language\ Modules/
 
 # C# language module
 curl http://luminaryapps.com/code/CSharpLanguageModule.plist > ~/Library/Application\ Support/BBEdit/Language\ Modules/CSharpLanguageModule.plist
+
+# Highlight matches of selected text
+defaults write com.barebones.bbedit UseLineHeightHighlightingForInstancesOfSelectedText -int 1
+
+# Pressing the tab key indents all selected text
+defaults write com.barebones.bbedit AllowTabToIndentText -int 1
 #############
 ## End BBEdit
 #############
@@ -388,6 +395,9 @@ curl http://luminaryapps.com/code/CSharpLanguageModule.plist > ~/Library/Applica
 #########
 ## Finder
 #########
+
+# Show the ~/Library folder.
+chflags nohidden ~/Library
 
 # Set the Finder prefs for showing a few different volumes on the Desktop.
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -823,7 +833,6 @@ cd ~/Library/Application\ Support/
 git clone git@github.com:hbiede/factorio.git
 ## end fun gits
 
-echo ""
-echo "Rebooting to Finalize Changes"
+echo -e "\nRebooting to Finalize Changes"
 sleep 5
 sudo reboot
