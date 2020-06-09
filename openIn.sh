@@ -34,6 +34,7 @@ duti -s com.barebones.bbedit .txt all
 duti -s com.barebones.bbedit .tex all
 duti -s com.barebones.bbedit .rb all
 duti -s com.barebones.bbedit .go all
+duti -s com.barebones.bbedit .html all
 duti -s com.apple.Preview .cr2 all
 duti -s org.videolan.vlc .mp4 all
 duti -s org.videolan.vlc .mov all
