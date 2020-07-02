@@ -110,6 +110,9 @@ duti -s com.barebones.bbedit .html all
 duti -s com.barebones.bbedit .htm all
 duti -s com.barebones.bbedit .css all
 duti -s com.barebones.bbedit .js all
+duti -s com.barebones.bbedit .jsx all
+duti -s com.barebones.bbedit .ts all
+duti -s com.barebones.bbedit .tsx all
 duti -s com.barebones.bbedit .wkt all
 duti -s com.barebones.bbedit .csv all
 duti -s com.barebones.bbedit .dat all
