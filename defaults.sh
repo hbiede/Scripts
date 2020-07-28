@@ -52,6 +52,8 @@ brew install python;
 brew install ffmpeg;
 brew install youtube-dl;
 brew install hub;
+brew install tree;
+brew install jq;
 #######################
 ## End Install Programs
 #######################
