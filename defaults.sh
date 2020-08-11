@@ -363,6 +363,12 @@ function updater --description 'brew doctor; brew update; brew upgrade; brew cas
 	brew doctor; brew update; brew upgrade; brew cask doctor; brew cask upgrade; brew cleanup; sudo softwareupdate -i -a
 end
 " > ~/.config/fish/functions/updater.fish
+echo "# Defined in - @ line 0
+function fish_greeting
+	echo 'POWAH!!!'
+end
+" > ~/.config/fish/functions/fish_greeting.fish
+set fish_greeting
 ###########
 ## End Fish
 ###########
