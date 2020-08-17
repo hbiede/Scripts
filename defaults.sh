@@ -164,6 +164,12 @@ defaults write com.apple.systempreferences AppleOtherHighlightColor "0.184314 0.
 defaults write NSGlobalDomain AppleHighlightColor "0.184314 0.863235 0.321939 Other"
 defaults -currentHost write NSGlobalDomain AppleHighlightColor "0.184314 0.863235 0.321939 Other"
 
+# Set the menu back content
+defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+                   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+                   "/System/Library/CoreServices/Menu Extras/Clock.menu" \
+                   "/System/Library/CoreServices/Menu Extras/Volume.menu";
+
 # Dark Mode w/ Red accents
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 defaults write NSGlobalDomain AppleAccentColor -int 0
