@@ -738,6 +738,7 @@ hs_err_pid*
 
 # IntelliJ
 **/.idea/
+*.iml
 
 # Eclipse
 .classpath
