@@ -11,6 +11,73 @@
 # Ask for the administrator password upfront
 sudo -v
 
+#######
+## Dock
+#######
+
+echo \a
+echo "Wipe all (default) app icons from the Dock? (y/n)"
+read -r response
+if [[ $response =~ ^([yY]([eE][sS])?)$ ]]
+then
+  defaults write com.apple.dock persistent-apps -array;
+fi
+
+# Set the icon size of Dock items to 50 pixels
+defaults write com.apple.dock tilesize -int 50
+
+# Lock the Dock size
+defaults write com.apple.dock size-immutable -bool true
+
+# Dock orientation: 'left', 'bottom', 'right'
+defaults write com.apple.dock orientation left
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+defaults write com.apple.dashboard enabled-state -int 1
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Disable the Launchpad gesture (pinch with thumb and three fingers)
+defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+
+# Set Menu Bar
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool false
+defaults write com.apple.TextInputMenuAgent "NSStatusItem Visible Item-0" -bool false
+defaults write com.apple.TextInputMenu "visible" -bool false
+defaults write com.apple.systemuiserver menuExtras -array \
+    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+    "/System/Library/CoreServices/Menu Extras/Clock.menu"
+
+# Show Percent Battery in menu bar
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# Flash the time separators
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+
+# Analog menu bar clock
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+
+killall Dock>/dev/null/
+###########
+## End Dock
+###########
+
 
 
 ###################
@@ -469,75 +536,6 @@ killall Finder
 #############
 ## End Finder
 #############
-
-
-
-#######
-## Dock
-#######
-
-echo \a
-echo "Wipe all (default) app icons from the Dock? (y/n)"
-read -r response
-if [[ $response =~ ^([yY]([eE][sS])?)$ ]]
-then
-  defaults write com.apple.dock persistent-apps -array;
-fi
-
-# Set the icon size of Dock items to 50 pixels
-defaults write com.apple.dock tilesize -int 50
-
-# Lock the Dock size
-defaults write com.apple.dock size-immutable -bool true
-
-# Dock orientation: 'left', 'bottom', 'right'
-defaults write com.apple.dock orientation left
-
-# Show indicator lights for open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool true
-
-# Minimize windows into their application’s icon
-defaults write com.apple.dock minimize-to-application -bool true
-
-# Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
-defaults write com.apple.dashboard enabled-state -int 1
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
-
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
-
-# Don’t show recent applications in Dock
-defaults write com.apple.dock show-recents -bool false
-
-# Disable the Launchpad gesture (pinch with thumb and three fingers)
-defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
-
-# Set Menu Bar
-defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool false
-defaults write com.apple.TextInputMenuAgent "NSStatusItem Visible Item-0" -bool false
-defaults write com.apple.TextInputMenu "visible" -bool false
-defaults write com.apple.systemuiserver menuExtras -array \
-    "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-    "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-    "/System/Library/CoreServices/Menu Extras/Clock.menu"
-
-# Show Percent Battery in menu bar
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
-
-# Flash the time separators
-defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
-
-# Analog menu bar clock
-defaults write com.apple.menuextra.clock IsAnalog -bool false
-
-killall Dock>/dev/null/
-###########
-## End Dock
-###########
 
 
 
