@@ -18,8 +18,7 @@ sudo -v
 echo \a
 echo "Wipe all (default) app icons from the Dock? (y/n)"
 read -r response
-if [[ $response =~ ^([yY]([eE][sS])?)$ ]]
-then
+if [[ $response =~ ^([yY]([eE][sS])?)$ ]]; then
   defaults write com.apple.dock persistent-apps -array;
 fi
 
@@ -73,7 +72,7 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 # Analog menu bar clock
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 
-killall Dock>/dev/null/
+killall Dock>/dev/null
 ###########
 ## End Dock
 ###########
