@@ -19,7 +19,7 @@ sudo -v
 
 # Install Homebrew, fish, wget, nano, and LaTeX if not installed
 if ! hash brew 2>/dev/null; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)";
 fi
 if ! hash fish 2>/dev/null; then
   brew install fish;
