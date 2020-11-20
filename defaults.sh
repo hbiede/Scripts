@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.10
+# Version 1.3.11
 
 # Ask for the administrator password upfront
 sudo -v
@@ -834,6 +834,7 @@ ipython_config.py
 
 # Node
 **/node_modules/*" > ~/.gitignore_global
+git config --global init.defaultBranch main
 
 ## setup dev environments
 mkdir -p ~/Desktop/Code/Personal\ Projects
