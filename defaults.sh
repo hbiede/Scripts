@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.11
+# Version 1.3.12
 
 # Ask for the administrator password upfront
 sudo -v
@@ -111,15 +111,15 @@ fi
 
 # update important utils
 brew install cmake;
-brew install grep;
+brew install ffmpeg;
 brew install golang;
+brew install grep;
+brew install hub;
+brew install jq;
 brew install php;
 brew install python;
-brew install ffmpeg;
-brew install youtube-dl;
-brew install hub;
 brew install tree;
-brew install jq;
+brew install youtube-dl;
 #######################
 ## End Install Programs
 #######################
@@ -130,24 +130,23 @@ brew install jq;
 ## Install Apps
 ###############
 
-brew cask install bbedit
 brew cask install alfred
-brew cask install discord
-brew cask install omnifocus
-brew cask install google-chrome
-brew cask install spotify
-brew cask install quicklook-json
-brew cask install sourcetree
+brew cask install bbedit
 brew cask install caffeine
-brew cask install spectacle
-brew cask install intellij-idea
 brew cask install clion
+brew cask install discord
 brew cask install goland
+brew cask install google-chrome
+brew cask install intellij-idea
+brew cask install omnifocus
 brew cask install pycharm
+brew cask install quicklook-json
 brew cask install rubymine
-brew cask install qbittorrent
-brew cask install vlc
+brew cask install sourcetree
+brew cask install spectacle
+brew cask install spotify
 brew cask install the-unarchiver
+brew cask install vlc
 
 brew tap homebrew/cask-fonts
 brew cask install font-jetbrains-mono
