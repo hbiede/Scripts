@@ -130,26 +130,26 @@ brew install youtube-dl;
 ## Install Apps
 ###############
 
-brew cask install alfred
-brew cask install bbedit
-brew cask install caffeine
-brew cask install clion
-brew cask install discord
-brew cask install goland
-brew cask install google-chrome
-brew cask install intellij-idea
-brew cask install omnifocus
-brew cask install pycharm
-brew cask install quicklook-json
-brew cask install rubymine
-brew cask install sourcetree
-brew cask install spectacle
-brew cask install spotify
-brew cask install the-unarchiver
-brew cask install vlc
+brew install alfred
+brew install bbedit
+brew install caffeine
+brew install clion
+brew install discord
+brew install goland
+brew install google-chrome
+brew install intellij-idea
+brew install omnifocus
+brew install pycharm
+brew install quicklook-json
+brew install rubymine
+brew install sourcetree
+brew install spectacle
+brew install spotify
+brew install the-unarchiver
+brew install vlc
 
 brew tap homebrew/cask-fonts
-brew cask install font-jetbrains-mono
+brew install font-jetbrains-mono
 ###################
 ## End Install Apps
 ###################
