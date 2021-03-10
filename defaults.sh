@@ -6,10 +6,10 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.12
+# Version 1.3.13
 
 # Ask for the administrator password upfront
-sudo -v
+sudo -vB
 
 #######
 ## Dock
