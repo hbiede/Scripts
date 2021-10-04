@@ -694,6 +694,8 @@ echo "[user]
 	ignoreCase = true
 [branch]
 	autosetuprebase = always
+[init]
+	defaultBranch = main
 " > ~/.gitconfig
 
 echo "# Backup files
