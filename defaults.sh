@@ -105,7 +105,7 @@ if ! hash nano 2>/dev/null; then
   brew install nano;
 fi
 if ! hash pdflatex 2>/dev/null; then
-  brew cask install basictex;
+  brew install basictex;
   tlmgr init-usertree
   sudo tlmgr update --self;
   sudo tlmgr update --all;
@@ -434,7 +434,7 @@ function hide --description alias\ hide=defaults\ write\ com.apple.finder\ Apple
 end
 " > ~/.config/fish/functions/hide.fish
 touch ~/.config/fish/functions/updater.fish
-alias updater='brew doctor; brew update; brew upgrade; brew cask doctor; brew upgrade --cask; brew cleanup; sudo softwareupdate -i -a'
+alias updater='brew doctor; brew update; brew upgrade; brew cleanup; sudo softwareupdate -i -a'
 echo "# Defined in - @ line 0
 function updater --description 'brew doctor; brew update; brew upgrade; brew cleanup; sudo softwareupdate -i -a'
 	brew doctor; brew update; brew upgrade; brew cleanup; sudo softwareupdate -i -a
