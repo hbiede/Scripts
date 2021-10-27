@@ -89,8 +89,14 @@ if ! hash brew 2>/dev/null; then
 fi
 if ! hash fish 2>/dev/null; then
   brew install fish;
-  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/fish;
+  if [[ "${UNAME_MACHINE}" == "arm64" ]]
+  then
+    echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells;
+    chsh -s /opt/homebrew/bin/fish;
+  else
+    echo "/usr/local/bin/fish" | sudo tee -a /etc/shells;
+    chsh -s /usr/local/bin/fish;
+  fi
 fi
 if ! hash wget 2>/dev/null; then
   brew install wget;
