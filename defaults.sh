@@ -409,6 +409,9 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Install Terminal fonts system wide
 cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf ~/Library/Fonts/
+
+# Show icons in the titlebars again
+defaults write com.apple.universalaccess showWindowTitlebarIcons -int 1
 #############
 ## End System
 #############
