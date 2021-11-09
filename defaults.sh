@@ -113,6 +113,9 @@ if ! hash pdflatex 2>/dev/null; then
   sudo tlmgr install pygmentex;
   sudo easy_install Pygments;
   sudo tlmgr install biblatex;
+  # Used for full page package
+  sudo tlmgr install preprint;
+  sudo tlmgr install easylist;
 fi
 
 # update important utils
