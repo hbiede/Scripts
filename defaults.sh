@@ -699,13 +699,15 @@ killall ControlStrip
 echo "[user]
 	name = hbiede
 	email = 6586509+hbiede@users.noreply.github.com
+[advice]
+	addIgnoredFile = false
+[branch]
+	autosetuprebase = always
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	editor = nano
 	ignoreCase = true
-[branch]
-	autosetuprebase = always
 [init]
 	defaultBranch = main
 " > ~/.gitconfig
