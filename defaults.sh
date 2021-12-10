@@ -850,6 +850,7 @@ ipython_config.py
 # Node
 **/node_modules/*" > ~/.gitignore_global
 git config --global init.defaultBranch main
+git config --global url."ssh://git@github.com".insteadOf "https://github.com" || true
 
 ## setup dev environments
 mkdir -p ~/Desktop/Code/Personal\ Projects
