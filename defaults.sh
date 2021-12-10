@@ -1,12 +1,12 @@
 #!/bin/sh
-# Adapted from tibr by Hundter Biede
+# Adapted from tibr by HBiede
 # https://github.com/tibr/dotfiles/blob/master/osx/set-defaults.sh
 # 
 # Originally inspired by zach holman
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.3.13
+# Version 1.4.0
 
 # Ask for the administrator password upfront
 sudo -vB
