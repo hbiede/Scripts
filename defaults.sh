@@ -11,6 +11,9 @@
 # Ask for the administrator password upfront
 sudo -vB
 
+# Install Xcode Command Line Tools
+xcode-select --install || echo 1
+
 #######
 ## Dock
 #######
