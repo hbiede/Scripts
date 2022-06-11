@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.4.0
+# Version 1.4.1
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -777,16 +777,18 @@ Temporary Items
 *.toc
 *.bbl
 *.blg
-*.out
-*.run.xml
-*.lof
-*.lot
+*.cb
+*.cb2
+*.fff
 *.fls
 *.fmt
 *.fot
-*.cb
-*.cb2
 .*.lb
+*.lof
+*.lot
+*.out
+*.run.xml
+*.ttt
 .pdf # If empty string is given to generator
 
 ## LaTeX - Beamer
