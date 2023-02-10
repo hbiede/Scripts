@@ -153,9 +153,9 @@ brew install intellij-idea
 brew install omnifocus
 brew install pycharm
 brew install quicklook-json
+brew install rectangle
 brew install rubymine
 brew install sourcetree
-brew install spectacle
 brew install spotify
 brew install the-unarchiver
 brew install vlc
