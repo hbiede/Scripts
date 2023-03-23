@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.4.1
+# Version 1.4.2
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -131,7 +131,7 @@ brew install jq;
 brew install php;
 brew install python;
 brew install tree;
-brew install youtube-dl;
+brew install yt-dlp;
 #######################
 ## End Install Programs
 #######################
