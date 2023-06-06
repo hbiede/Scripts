@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 1.4.2
+# Version 2023.1
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -542,6 +542,9 @@ chflags nohidden ~/Library
 
 # Disable iCloud as default save location
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# Disable desktop interactive previews of files (they're too small to do anything useful)
+defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 512
 
 killall Finder
 #############
