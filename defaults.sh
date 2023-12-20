@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 2023.1
+# Version 2023.2
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -866,6 +866,22 @@ git clone git@github.com:hbiede/portfolio.git
 cd ~/Documents/
 git clone git@github.com:hbiede/Contacts.git
 git clone git@github.com:hbiede/Scripts.git
+
+mkdir -p ~/Library/Developer/Xcode/UserData
+echo "<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>FILEHEADER</key>
+	<string>
+// ___FILEBASENAME___
+// ___PACKAGENAME___ 
+//
+// Created on ___DATE___
+//</string>
+</dict>
+</plist>
+" > ~/Library/Developer/Xcode/UserData/IDETemplateMacros.plist
 ## end dev setup
 
 ## fun gits
