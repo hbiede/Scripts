@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 2025.1
+# Version 2025.2
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -233,6 +233,9 @@ brew cleanup > /dev/null
 
 # Prevent System Prefs from breaking anything
 killall "System Preferences"
+
+# Disable sudden motion sensor (not needed for SSDs)
+sudo pmset -a sms 0
 
 # Green text highlighting
 defaults write com.apple.finder AppleOtherHighlightColor "0.184314 0.863235 0.321939"
@@ -501,7 +504,7 @@ defaults write com.apple.finder FXPreferredSearchViewStyle -string "Nlsv"
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Search current folder by default
-defaults write com.apple.finder FXDefaultSearchScope SCcf
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
@@ -597,7 +600,9 @@ killall Calendar>/dev/null
 #########
 
 # Set up Safari for development
-defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
+defaults write com.apple.Safari ShowDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
 # Enable continuous spellchecking
 defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
@@ -664,6 +669,9 @@ killall Contacts>/dev/null
 plutil -replace Window\ Settings.Pro.rowCount -integer 32 ~/Library/Preferences/com.apple.Terminal.plist
 plutil -replace Window\ Settings.Pro.columnCount -integer 118 ~/Library/Preferences/com.apple.Terminal.plist
 defaults write com.apple.Terminal Default\ Window\ Settings -string "Pro"
+
+# Enable Secure Keyboard Entry in Terminal.app
+defaults write com.apple.terminal SecureKeyboardEntry -bool true
 ###############
 ## End Terminal
 ###############
