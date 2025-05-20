@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 2025.2
+# Version 2025.3
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -412,8 +412,11 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Install Terminal fonts system wide
 cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf ~/Library/Fonts/
 
-# Show icons in the titlebars again
+# Show icons in the titlebars
 defaults write com.apple.universalaccess showWindowTitlebarIcons -int 1
+
+# Enable AirDrop over Ethernet and on unsupported Macs
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 #############
 ## End System
 #############
