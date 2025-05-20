@@ -6,7 +6,7 @@
 #   https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 # and mathias bynens
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-# Version 2023.2
+# Version 2025.1
 
 # Ask for the administrator password upfront
 sudo -vB
@@ -75,7 +75,7 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
 # Analog menu bar clock
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 
-killall Dock>/dev/null
+killall Dock > /dev/null
 ###########
 ## End Dock
 ###########
@@ -107,19 +107,19 @@ fi
 if ! hash nano 2>/dev/null; then
   brew install nano;
 fi
-if ! hash pdflatex 2>/dev/null; then
-  brew install basictex;
-  tlmgr init-usertree
-  sudo tlmgr update --self;
-  sudo tlmgr update --all;
-  sudo tlmgr install minted;
-  sudo tlmgr install pygmentex;
-  sudo easy_install Pygments;
-  sudo tlmgr install biblatex;
-  # Used for full page package
-  sudo tlmgr install preprint;
-  sudo tlmgr install easylist;
-fi
+# if ! hash pdflatex 2>/dev/null; then
+#   brew install basictex;
+#   tlmgr init-usertree
+#   sudo tlmgr update --self;
+#   sudo tlmgr update --all;
+#   sudo tlmgr install minted;
+#   sudo tlmgr install pygmentex;
+#   sudo easy_install Pygments;
+#   sudo tlmgr install biblatex;
+#   # Used for full page package
+#   sudo tlmgr install preprint;
+#   sudo tlmgr install easylist;
+# fi
 
 # update important utils
 brew install cmake;
@@ -128,7 +128,6 @@ brew install golang;
 brew install grep;
 brew install hub;
 brew install jq;
-brew install php;
 brew install python;
 brew install tree;
 brew install yt-dlp;
@@ -380,9 +379,6 @@ defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
-# Set the time zone
-sudo systemsetup -settimezone "America/Chicago" > /dev/null
-
 # Restart automatically on power loss
 sudo pmset -a autorestart 1
 	
@@ -448,7 +444,7 @@ end
 " > ~/.config/fish/functions/updater.fish
 echo "# Defined in - @ line 0
 function fish_greeting
-	echo 'POWAH!!!'
+	echo \"It's a UNIX system! I know this!\"
 end
 " > ~/.config/fish/functions/fish_greeting.fish
 set fish_greeting
@@ -667,53 +663,85 @@ killall Contacts>/dev/null
 # Set default display settings of Terminal 
 plutil -replace Window\ Settings.Pro.rowCount -integer 32 ~/Library/Preferences/com.apple.Terminal.plist
 plutil -replace Window\ Settings.Pro.columnCount -integer 118 ~/Library/Preferences/com.apple.Terminal.plist
-defaults write com.apple.Terminal Startup\ Window\ Settings -string "Pro"
+defaults write com.apple.Terminal Default\ Window\ Settings -string "Pro"
 ###############
 ## End Terminal
 ###############
 
 
-############
-## Touch Bar
-############
-
-defaults write com.apple.controlstrip FullCustomized -array \
-    "com.apple.system.mission-control" \
-    "NSTouchBarItemIdentifierFlexibleSpace" \
-    "com.apple.system.group.brightness" \
-    "com.apple.system.group.keyboard-brightness" \
-    "com.apple.system.group.media" \
-    "com.apple.system.group.volume"
-
-defaults write com.apple.controlstrip MiniCustomized -array \
-    "com.apple.system.brightness" \
-    "com.apple.system.mute" \
-    "com.apple.system.volume" \
-    "com.apple.system.mission-control"
-    
-
-killall ControlStrip
-################
-## End Touch Bar
-################
-
 ## git
 
-echo "[user]
-	name = hbiede
-	email = 6586509+hbiede@users.noreply.github.com
-[advice]
-	addIgnoredFile = false
-[branch]
-	autosetuprebase = always
-[core]
+echo "[core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	editor = nano
 	ignoreCase = true
+	pager = less -FRX
+[advice]
+	addIgnoredFile = false
+[color]
+	ui = auto
+
 [init]
 	defaultBranch = main
-" > ~/.gitconfig
+[blame]
+	# Skip commits that just change whitespace
+	ignoreRevsFile = .git-blame-ignore-revs
+[branch]
+	autosetuprebase = always
+[diff]
+	tool = intellij
+
+	# Better handling of whitespace
+	wsErrorHighlight = all
+
+	# Detect copied/moved code chunks
+	renames = copies
+    
+	# Show moved lines differently
+	colorMoved = default
+[diff \"bin\"]
+	textconv = hexdumb -v -C
+[fetch]
+	prune = true
+	pruntTags = true
+[merge]
+	tool = intellij
+[push]
+	autoSetupRemote = true
+
+[rerere]
+	# Remember resolved conflicts
+	enabled = true
+    
+	# Auto-stage files that were resolved using rerere
+	autoupdate = true
+[url \"ssh://git@github.com\"]
+	insteadOf = https://github.com
+[filter \"lfs\"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[alias]
+	# Show a calendar heatmap of activity
+	calendar = \"!git log --date=short --format='%ad' | sort | uniq -c\"
+
+	# Find a commit referencing a given term
+	find = \"!f() { git log --pretty=format:'%C(yellow)%h %Cblue%ad %Creset%s%Cgreen [%cn] %Cred%d' --decorate --date=short --grep=\$1; }; f\"
+
+	# Show a the author of a line of code, ignoring whitespace and refactors
+	originalBlame = blame -w -C -C -C
+
+	# Show a graphical view of the repository history
+	tree = log --graph --pretty=format:'%C(auto)%h - %s [%an] (%C(blue)%ar%C(auto))%d'
+
+[mergetool \"intellij\"]
+    cmd = idea merge \$(cd \$(dirname \\\"\$LOCAL\\\") && pwd)/\$(basename \\\"\$LOCAL\\\") \$(cd \$(dirname \\\"\$REMOTE\\\") && pwd)/\$(basename \\\"\$REMOTE\\\") \$(cd \$(dirname \\\"\$BASE\\\") && pwd)/\$(basename \\\"\$BASE\\\") \$(cd \$(dirname \\\"\$MERGED\\\") && pwd)/\$(basename \\\"\$MERGED\\\")
+    trustExitCode = true
+[difftool \"intellij\"]
+    cmd = idea diff \$(cd \$(dirname \\\"\$LOCAL\") && pwd)/\$(basename \\\"\$LOCAL\\\") \$(cd \$(dirname \\\"\$REMOTE\\\") && pwd)/\$(basename \\\"\$REMOTE\\\")" > ~/.gitconfig
 
 echo "# Backup files
 *~
@@ -854,18 +882,6 @@ ipython_config.py
 
 # Node
 **/node_modules/*" > ~/.gitignore_global
-git config --global init.defaultBranch main
-git config --global url."ssh://git@github.com".insteadOf "https://github.com" || true
-
-## setup dev environments
-mkdir -p ~/Desktop/Code/Personal\ Projects
-cd ~/Desktop/Code/Personal\ Projects/
-git clone git@github.com:hbiede/Lazy-Clock.git
-git clone git@github.com:hbiede/Layer-Saver-Script.git
-git clone git@github.com:hbiede/portfolio.git
-cd ~/Documents/
-git clone git@github.com:hbiede/Contacts.git
-git clone git@github.com:hbiede/Scripts.git
 
 mkdir -p ~/Library/Developer/Xcode/UserData
 echo "<?xml version="1.0" encoding="UTF-8"?>
@@ -883,13 +899,6 @@ echo "<?xml version="1.0" encoding="UTF-8"?>
 </plist>
 " > ~/Library/Developer/Xcode/UserData/IDETemplateMacros.plist
 ## end dev setup
-
-## fun gits
-cd ~/Music/
-git clone git@github.com:hbiede/Local-Music.git
-cd ~/Library/Application\ Support/
-git clone git@github.com:hbiede/factorio.git
-## end fun gits
 
 echo -e "\nRebooting to Finalize Changes"
 sleep 5
