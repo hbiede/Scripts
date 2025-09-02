@@ -308,6 +308,7 @@ defaults write com.apple.AppleMultitouchMouse MouseOneFingerDoubleTapGesture -in
 defaults write com.apple.AppleMultitouchMouse MouseTwoFingerDoubleTapGesture -int 3
 defaults write com.apple.AppleMultitouchMouse MouseTwoFingerHorizSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchMouse MouseVerticalScroll -bool true
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
 
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" -string "@v"
 defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
